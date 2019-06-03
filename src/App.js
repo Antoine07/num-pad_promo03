@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import './App.css';
 
 import Number from './components/Number';
+import Message from './components/Message';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,14 +14,15 @@ class App extends React.Component {
 
   render(){
 
+    const { values } = this.props;
+
     const numbers = [
         ...Array(10).keys()
       ].reverse();
 
-    console.log(this.props);
-
     return (
-      <div className="container">
+    <div className="container">
+     <Message numbers={values} />
       <div className="row">
         <div className="col-md-8">
           <div className="container-number">
@@ -30,7 +32,7 @@ class App extends React.Component {
           </div>
         </div>
       </div>
-      </div>
+    </div>
     )
   }
 }
