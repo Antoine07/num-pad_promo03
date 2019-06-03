@@ -1,4 +1,4 @@
-const SEND_NUMBER = 'SEND_NUMBER';
+import { SEND_NUMBER, RESET_NUMPAD } from '../constants/action-type';
 
 const stateInit = {
     values : []
@@ -16,6 +16,13 @@ export default (state = stateInit, action = {}) => {
                     ...state.values, 
                     action.payload 
                 ]
+            }
+        
+        case RESET_NUMPAD:
+
+            return {
+                ...state,
+                values : []
             }
 
         default:

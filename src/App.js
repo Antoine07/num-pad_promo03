@@ -6,6 +6,7 @@ import './App.css';
 
 import Number from './components/Number';
 import Message from './components/Message';
+import Reset from './components/Reset';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,9 +28,14 @@ class App extends React.Component {
         <div className="col-md-8">
           <div className="container-number">
             {numbers.map((number, index) =>
-              <Number number={number} />
+              <Number key={index} number={number} />
             )}
           </div>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-12">
+              <Reset />
         </div>
       </div>
     </div>
