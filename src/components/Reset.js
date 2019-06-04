@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { resetNumpad } from '../actions/actions';
+import { resetNumpad, resetGame } from '../actions/actions';
 
 class Reset extends Component {
     constructor(props) {
@@ -11,17 +11,34 @@ class Reset extends Component {
         this.props.resetNumpad()
     }
 
+    handleResetGame = () => {
+        this.props.resetGame()
+    }
+
     render() {
 
-        return (
-            <button 
-                type="button" 
-                className="btn btn-danger"
-                onClick={this.handleReset}
-            >
-            <small>Reset Numpad</small>
-            </button>
-        );
+        const { type } = this.props;
+
+        if(type === 'resetPad')
+            return (
+                <button 
+                    type="button" 
+                    className="btn btn-danger"
+                    onClick={this.handleReset}
+                >
+                <small>Reset Numpad</small>
+                </button>
+            );
+        else
+            return (
+                <button 
+                    type="button" 
+                    className="btn btn-danger"
+                    onClick={this.handleResetGame}
+                >
+                <small>Restart</small>
+                </button>
+            );  
     }
 }
 
@@ -29,6 +46,7 @@ const mapDispatchToProps = (dispatch) => {
 
     return {
         resetNumpad: () => dispatch(resetNumpad()),
+        resetGame: () => dispatch(resetGame()),
     }
 };
 

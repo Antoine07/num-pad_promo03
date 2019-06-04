@@ -1,8 +1,5 @@
 import React from 'react';
 
-import { connect } from 'react-redux';
-import { sendNumber } from '../actions/actions';
-
 import './Message.scss';
 
 class Message extends React.Component {
@@ -11,15 +8,18 @@ class Message extends React.Component {
     }
 
     render (){
-        const { numbers } = this.props;
+        const { message } = this.props;
+
+        let classes = ["alert"];
         
+        classes.push(message.type);
+
         return ( 
-            <div className="alert alert-primary" role="alert">
-                Calcul : {numbers.join('')}
+            <div className={classes.join(' ')} role="alert">
+               {message.text}
             </div>
             )
     }
-
 }
 
 export default Message;
